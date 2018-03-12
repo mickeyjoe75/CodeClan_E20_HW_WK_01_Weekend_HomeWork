@@ -25,8 +25,33 @@ end
 
 def pets_by_breed (pet_shop,pets_breed)
   breeds_match = []
-for  pet in pet_shop[:pets]
+for pet in pet_shop[:pets]
   breeds_match << pet if(pet[:breed] == pets_breed)
 end
   return breeds_match
+end
+
+def find_pet_by_name(pet_shop,pets_name)
+  name_match = nil
+for pet in pet_shop[:pets]
+  name_match = pet if(pet[:name] == pets_name)
+end
+  return name_match
+end
+
+def remove_pet_by_name(pet_shop,pets_name)
+  find_pet_to_delete = find_pet_by_name(pet_shop,pets_name)
+  pet_shop[:pets].delete(find_pet_to_delete)
+end
+
+def add_pet_to_stock(pet_shop,pets_name)
+  pet_shop[:pets].push(pets_name)
+end
+
+def customer_pet_count(customers)
+  return customers[:pets].count
+end
+
+def add_pet_to_customer(customers, pet_name)
+  customers[:pets] << pet_name
 end
